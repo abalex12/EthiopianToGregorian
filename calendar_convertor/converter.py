@@ -63,17 +63,24 @@ class EthiopianDateConverter(object):
 
     @classmethod
     def to_ethiopian(cls, year, month, date):
+        """ Ethiopian date string representation of provided Gregorian date"""
+
         inputs = (year, month, date)
         if 0 in inputs or [data.__class__ for data in inputs].count(int) != 3:
             raise ValueError("Malformed input can't be converted.")
 
+        
         if month == 10 and date >= 5 and date <= 14 and year == 1582:
             raise ValueError("Invalid Date between 5-14 May 1582.")
 
-        gregorian_months = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-        ethiopian_months = [0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5, 30, 30, 30, 30]
+       
+        gregorian_months = [0, 31, 28, 31, 30, 31, 30, \
+                            31, 31, 30, 31, 30, 31]
 
-        if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:
+        ethiopian_months = [0, 30, 30, 30, 30, 30, 30, 30, \
+                            30, 30, 5, 30, 30, 30, 30]
+
+        if  (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:
             gregorian_months[2] = 29
 
         ethiopian_year = year - 8
@@ -90,20 +97,26 @@ class EthiopianDateConverter(object):
             until += gregorian_months[i]
         until += date
 
+        if ethiopian_year % 4 == 0:
+            tahissas = 26
+        else:
+            tahissas = 25
+
         if year < 1582:
             ethiopian_months[1] = 0
-            ethiopian_months[2] = 26
+            ethiopian_months[2] = tahissas
         elif until <= 277 and year == 1582:
             ethiopian_months[1] = 0
-            ethiopian_months[2] = 26
+            ethiopian_months[2] = tahissas
         else:
-            ethiopian_months[1] = new_year_day - 3
+            tahissas = new_year_day - 3
+            ethiopian_months[1] = tahissas
 
         m = 0
         for m in range(1, ethiopian_months.__len__()):
             if until <= ethiopian_months[m]:
                 if m == 1 or ethiopian_months[m] == 0:
-                    ethiopian_date = until + (30 - 26)
+                    ethiopian_date = until + (30 - tahissas)
                 else:
                     ethiopian_date = until
                 break

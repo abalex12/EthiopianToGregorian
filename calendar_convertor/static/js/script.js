@@ -89,19 +89,95 @@ document.addEventListener('DOMContentLoaded', function() {
     updateEthiopianDays(); // Initial population
 
     function formatEthiopianDate(responseText) {
+        const ethiopianMonths = {
+            1: 'መስከረም',
+            2: 'ጥቅምት',
+            3: 'ኅዳር',
+            4: 'ታኅሣሥ',
+            5: 'ጥር',
+            6: 'የካቲት',
+            7: 'መጋቢት',
+            8: 'ሚያዝያ',
+            9: 'ግንቦት',
+            10: 'ሰኔ',
+            11: 'ሃምሌ',
+            12: 'ነሐሴ',
+            13: 'ጳጉሜ'
+        };        
+        // Array for day names
+        const dayNames = ['እሁድ', 'ሰኞ', 'ማክሰኞ', 'ረቡዕ', 'ሐሙስ', 'አርብ', 'ቅዳሜ'];
+    
         try {
             const data = JSON.parse(responseText);
             if (data.success && data.result) {
                 const { day, month, year } = data.result;
-                return `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+                
+
+                
+                // Format numeric date
+                const numericDate = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+                
+                // Format written date
+                const writtenDate = `${ethiopianMonths[month]} ${day}, ${year}`;
+                
+                // Return both formats
+                return {
+                    numeric: numericDate,
+                    written: writtenDate
+                };
             }
-            return 'Invalid date';
+            return {
+                numeric: 'Invalid date',
+                written: 'Invalid date'
+            };
         } catch (error) {
             console.error('Error parsing date:', error);
-            return 'Invalid date';
+            return {
+                numeric: 'Invalid date',
+                written: 'Invalid date'
+            };
         }
     }
 
+    function formatGregorianDate(responseText) {
+        // Array for month names in English
+        const gregorianMonths = [
+            'January', 'February', 'March', 'April', 'May', 'June', 
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];    
+        // Array for day names in English
+        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    
+        try {
+            const data = JSON.parse(responseText);
+            if (data.success && data.result) {
+                const { day, month, year } = data.result;
+    
+                // Format numeric date
+                const numericDate = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+    
+                // Format written date
+                const writtenDate = `${gregorianMonths[month - 1]} ${day}, ${year}`;
+    
+                // Return both formats
+                return {
+                    numeric: numericDate,
+                    written: writtenDate
+                };
+            }
+            return {
+                numeric: 'Invalid date',
+                written: 'Invalid date'
+            };
+        } catch (error) {
+            console.error('Error parsing date:', error);
+            return {
+                numeric: 'Invalid date',
+                written: 'Invalid date'
+            };
+        }
+    }
+    
     function validateEthiopianInputs() {
         const year = yearSelect.value;
         const month = ethiopianMonthSelect.value;
@@ -120,8 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(response => response.text())
                 .then(data => {
                     const resultContainer = document.getElementById('gregorian-result');
-                    const formattedDate = formatEthiopianDate(data);
-                    resultContainer.querySelector('.result-value').textContent = formattedDate;
+                    const formattedDate = formatGregorianDate(data);
+                    resultContainer.querySelector('.result-value').textContent = `${formattedDate.numeric} or  ${formattedDate.written}`;
                     resultContainer.classList.add('slide-in');
                 })
                 .catch(error => console.error('Error:', error));
@@ -137,7 +213,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
                     const resultContainer = document.getElementById('ethiopian-result');
                     const formattedDate = formatEthiopianDate(data);
-                    resultContainer.querySelector('.result-value').textContent = formattedDate;
+                    resultContainer.querySelector('.result-value').textContent = 
+                    ` ${formattedDate.written}`;
+
                     resultContainer.classList.add('slide-in');
                 })
                 .catch(error => console.error('Error:', error));
@@ -195,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.text())
             .then(data => {
                 const formattedDate = formatEthiopianDate(data);
-                document.getElementById('today-ethiopian').textContent = formattedDate;
+                document.getElementById('today-ethiopian').textContent = `${formattedDate.written}`;
             })
             .catch(error => console.error('Error:', error));
     }

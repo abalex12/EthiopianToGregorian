@@ -111,9 +111,9 @@
             <li><a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">
                 <i class="fas fa-sync"></i>Convert</a>
             </li>
-            <li><a href="{{ url_for('calendar') }}" class="{% if request.endpoint == 'calendar' %}active{% endif %}">
+            <!-- <li><a href="{{ url_for('calendar') }}" class="{% if request.endpoint == 'calendar' %}active{% endif %}">
                 <i class="fas fa-calendar"></i>Calendar</a>
-            </li>
+            </li> -->
             <li><a href="{{ url_for('holiday') }}" class="{% if request.endpoint == 'holiday' %}active{% endif %}">
                 <i class="fas fa-star"></i>Holidays</a>
             </li>
@@ -146,11 +146,27 @@
     {% block scripts %}
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script>
-        document.querySelector('.header-btn').addEventListener('click', () => {
-        document.documentElement.setAttribute('data-theme', 
-        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
-        );
-    });
+// Function to set theme and save to localStorage
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('preferred-theme', theme);
+}
+
+// Function to initialize theme from localStorage or default
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('preferred-theme') || 'light';
+    setTheme(savedTheme);
+}
+
+// Add click event listener
+document.querySelector('.header-btn').addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+});
+
+// Initialize theme when page loads
+document.addEventListener('DOMContentLoaded', initializeTheme);
     </script>
     {% endblock %}
 </body>

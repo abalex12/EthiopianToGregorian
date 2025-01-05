@@ -153,199 +153,261 @@
 
     <style>
         :root {
-            /* Colors */
-            --color-primary: #2d3748;
-            --color-secondary: #4a5568;
-            --color-accent: #805ad5;
-            --color-background: #f7fafc;
-            --color-surface: #ffffff;
-            --color-text: #1a202c;
-            --color-text-light: #718096;
-            
-            /* Tags */
-            --color-tag-christian: #4299e1;
-            --color-tag-national: #48bb78;
-            --color-tag-islamic: #ed8936;
-            
-            /* Spacing */
-            --space-xs: 0.25rem;
-            --space-sm: 0.5rem;
-            --space-md: 1rem;
-            --space-lg: 2rem;
-            --space-xl: 4rem;
-            
-            /* Borders */
-            --radius-sm: 0.25rem;
-            --radius-md: 0.5rem;
-            --radius-lg: 1rem;
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: var(--space-md);
-        }
-        
-        /* Typography */
-        .heading-primary {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: var(--space-lg);
-        }
-        
-        .heading-secondary {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--color-secondary);
-            margin-bottom: var(--space-md);
-        }
-        
-        /* Search */
-        .search {
-            margin-bottom: var(--space-lg);
-        }
-        
-        .search__input {
-            width: 100%;
-            max-width: 400px;
-            padding: var(--space-sm) var(--space-md);
-            border: 1px solid var(--color-text-light);
-            border-radius: var(--radius-md);
-            font-size: 1rem;
-        }
-        
-        /* Cards */
-        .holidays__grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--space-lg);
-            margin-bottom: var(--space-xl);
-        }
-        
-        .card {
-            background: var(--color-surface);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .card__content {
-            padding: var(--space-lg);
-        }
-        
-        .card__title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-            color: var(--color-primary);
-        }
-        
-        .card__date {
-            display: block;
-            color: var(--color-text-light);
-            font-size: 0.875rem;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .card__description {
-            color: var(--color-text);
-            margin-bottom: var(--space-md);
-            line-height: 1.5;
-        }
-        
-        /* Tags */
-        .tag {
-            display: inline-block;
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: var(--radius-sm);
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: white;
-        }
-        
-        .tag--christian { background-color: var(--color-tag-christian); }
-        .tag--national { background-color: var(--color-tag-national); }
-        .tag--islamic { background-color: var(--color-tag-islamic); }
-        
-        /* Traditions & Etiquette */
-        .traditions__grid,
-        .etiquette__grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: var(--space-md);
-            margin-bottom: var(--space-xl);
-        }
-        
-        /* Info List */
-        .info__list {
-            background: var(--color-surface);
-            border-radius: var(--radius-lg);
-            padding: var(--space-lg);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .info__item {
-            margin-bottom: var(--space-md);
-            line-height: 1.6;
-        }
-        
-        .info__label {
-            color: var(--color-primary);
-            margin-right: var(--space-sm);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .heading-primary {
-                font-size: 2rem;
-            }
-            
-            .heading-secondary {
-                font-size: 1.5rem;
-            }
-            
-            .holidays__grid,
-            .traditions__grid,
-            .etiquette__grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .card__content {
-                padding: var(--space-md);
-            }
-        }
-        
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            .card {
-                transition: none;
-            }
-        }
-        
-        /* High Contrast Mode */
-        @media (prefers-contrast: high) {
-            :root {
-                --color-text: #000000;
-                --color-background: #ffffff;
-            }
-        }
+    /* Light theme colors (default) */
+    --color-primary: #2d3748;
+    --color-secondary: #4a5568;
+    --color-accent: #805ad5;
+    --color-background: #f7fafc;
+    --color-surface: #ffffff;
+    --color-text: #1a202c;
+    --color-text-light: #718096;
+    
+    /* Tags */
+    --color-tag-christian: #4299e1;
+    --color-tag-national: #48bb78;
+    --color-tag-islamic: #ed8936;
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+    --space-xl: 4rem;
+    
+    /* Borders */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+    --color-primary: #e2e8f0;
+    --color-secondary: #cbd5e0;
+    --color-accent: #b794f4;
+    --color-background: #1a202c;
+    --color-surface: #2d3748;
+    --color-text: #f7fafc;
+    --color-text-light: #a0aec0;
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-md);
+    background-color: var(--color-background);
+}
+
+/* Typography */
+.heading-primary {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+}
+
+.heading-secondary {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-md);
+}
+
+/* Search */
+.search {
+    margin-bottom: var(--space-lg);
+}
+
+.search__input {
+    width: 100%;
+    max-width: 400px;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-text-light);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+}
+
+/* Cards */
+.holidays__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card__content {
+    padding: var(--space-lg);
+}
+
+.card__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+}
+
+.card__date {
+    display: block;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-sm);
+}
+
+.card__description {
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+}
+
+/* Tags */
+.tag {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: white;
+}
+
+.tag--christian { background-color: var(--color-tag-christian); }
+.tag--national { background-color: var(--color-tag-national); }
+.tag--islamic { background-color: var(--color-tag-islamic); }
+
+/* Traditions & Etiquette */
+.traditions__grid,
+.etiquette__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.tradition-card,
+.etiquette-card {
+    background: var(--color-surface);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.tradition-card__title,
+.etiquette-card__title {
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tradition-card__text,
+.etiquette-card__text {
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+/* Info List */
+.info__list {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.info__item {
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.info__label {
+    color: var(--color-primary);
+    margin-right: var(--space-sm);
+}
+
+.info__text {
+    color: var(--color-text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .heading-primary {
+        font-size: 2rem;
+    }
+    
+    .heading-secondary {
+        font-size: 1.5rem;
+    }
+    
+    .holidays__grid,
+    .traditions__grid,
+    .etiquette__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card__content {
+        padding: var(--space-md);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --color-text: #000000;
+        --color-background: #ffffff;
+    }
+    
+    [data-theme="dark"] {
+        --color-text: #ffffff;
+        --color-background: #000000;
+    }
+}
+
+/* Focus styles */
+.search__input:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+}
         </style>
 </main>
 {% endblock %}
 
 
 {% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 <script>
 const filterHolidays = () => {
     const input = document.getElementById('holiday-filter');
@@ -367,5 +429,26 @@ document.getElementById('holiday-filter').addEventListener('input', (e) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => filterHolidays(), 300);
 });
+// Function to set theme and save to localStorage
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('preferred-theme', theme);
+}
+
+// Function to initialize theme from localStorage or default
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('preferred-theme') || 'light';
+    setTheme(savedTheme);
+}
+
+// Add click event listener
+document.querySelector('.header-btn').addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+});
+
+// Initialize theme when page loads
+document.addEventListener('DOMContentLoaded', initializeTheme);
 </script>
 {% endblock %}
