@@ -68,6 +68,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    
     <!-- Header -->
     <header class="header">
         <div class="header-left">
@@ -81,14 +82,14 @@
                 <i class="fas fa-moon"></i>
                 <span>Theme</span>
             </button>
-            <button class="header-btn">
+            <a href="{{ url_for('language') }}" class="header-btn">
                 <i class="fas fa-globe"></i>
                 <span>Language</span>
-            </button>
-            <button class="header-btn">
+            </a>
+            <a href="{{ url_for('help') }}" class="header-btn">
                 <i class="fas fa-question-circle"></i>
                 <span>Help</span>
-            </button>
+            </a>
         </div>
     </header>
 

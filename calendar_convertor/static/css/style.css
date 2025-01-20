@@ -84,6 +84,7 @@ body {
     border-radius: var(--border-radius);
     transition: all var(--transition-speed);
     color: var(--text-color);
+    text-decoration: none;
 }
 
 .header-btn:hover {

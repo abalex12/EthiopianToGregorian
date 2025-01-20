@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="help-container">
+    <style>
+        .help-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--secondary-color);
+            border-radius: 1rem;
+            color: var(--text-color);
+        }
+
+        .help-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color:var(--secondary-color);
+            border-radius: 0.75rem;
+        }
+
+        .help-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .help-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .help-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(229, 231, 235, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .help-content {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background-color: rgba(55, 65, 81, 0.5);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tip-box {
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+
+        .note-box {
+            border-left: 4px solid #FFA500;
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: rgba(255, 165, 0, 0.1);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .feature-item {
+            padding: 1rem;
+            background-color: rgba(55, 65, 81, 0.4);
+            border-radius: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .help-container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+
+    <div class="help-header">
+        <h2>Help & Documentation</h2>
+        <p>Learn how to use the Ethiopian-Gregorian Calendar Converter</p>
+    </div>
+
+    <div class="help-section">
+        <h3>Quick Start Guide</h3>
+        <div class="help-content">
+            <p>Converting dates between Ethiopian and Gregorian calendars is simple:</p>
+            <ol>
+                <li>Select your input calendar (Ethiopian or Gregorian)</li>
+                <li>Enter the date you want to convert and wait the magic to happen </li>
+               
+            </ol>
+            <div class="example-box">
+                <p><strong>Example:</strong> To convert Ethiopian date "1 Meskerem 2015"</p>
+                <ul>
+                    <li>Enter day: 1</li>
+                    <li>Select month: Meskerem</li>
+                    <li>Enter year: 2015</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-section">
+        <h3>Understanding Ethiopian Calendar</h3>
+        <div class="help-content">
+            <p>The Ethiopian calendar:</p>
+            <ul>
+                <li>Has 13 months (12 months of 30 days each, plus Pagume)</li>
+                <li>Pagume has 5 days (6 days in leap years)</li>
+                <li>Is approximately 7-8 years behind the Gregorian calendar</li>
+            </ul>
+            <div class="tip-box">
+                <strong>Tip:</strong> Ethiopian New Year typically falls on September 11th or 12th (Gregorian)
+            </div>
+        </div>
+    </div>
+
+    <div class="help-section">
+        <h3>Features</h3>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h4>Two-Way Conversion</h4>
+                <p>Convert dates in both directions between calendars</p>
+            </div>
+            <div class="feature-item">
+                <h4>Date Validation</h4>
+                <p>Automatic checking for valid dates in both calendars</p>
+            </div>
+            <div class="feature-item">
+                <h4>Multiple Languages</h4>
+                <p>Support for English and Amharic interfaces</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-section">
+        <h3>Common Issues</h3>
+        <div class="help-content">
+            <div class="note-box">
+                <strong>Invalid Date Messages:</strong>
+                <ul>
+                    <li>Check if the day is between 1-30 (1-5/6 for Pagume)</li>
+                    <li>Verify the year is in the supported range</li>
+                    <li>Make sure all fields are filled correctly</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-section">
+        <h3>Additional Tips</h3>
+        <div class="help-content">
+            <ul>
+                <li>Use the calendar icons to select dates visually</li>
+                <li>The swap button quickly switches between calendar systems</li>
+                <li>Save frequently used dates for quick access</li>
+            </ul>
+            <div class="tip-box">
+                <strong>Pro Tip:</strong> Double-check important dates by converting them back to verify accuracy
+            </div>
+        </div>
+    </div>
+
+    <div class="help-section">
+        <h3>Contact Support</h3>
+        <div class="help-content">
+            <p>If you need additional help or have suggestions:</p>
+            <ul>
+                <li>Email: abr099684@gmail.com</li>
+                <li>Submit feedback through the Email, Thanks for Using</li>
+                <li>Check our GitHub repository for updates</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

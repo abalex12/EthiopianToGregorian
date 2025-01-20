@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="coming-soon-container">
+    <style>
+        .coming-soon-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .globe-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .coming-soon-header {
+            margin-bottom: 2rem;
+        }
+
+        .coming-soon-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .coming-soon-header p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .language-preview {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .language-badge {
+            padding: 0.8rem 1.5rem;
+            background-color: rgba(55, 65, 81, 0.3);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .language-badge:hover {
+            transform: translateY(-5px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            max-width: 400px;
+            height: 6px;
+            background-color: rgba(55, 65, 81, 0.3);
+            border-radius: 3px;
+            margin: 2rem auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            position: absolute;
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+            border-radius: 3px;
+            animation: progress 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes progress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .notification {
+            background-color: rgba(55, 65, 81, 0.3);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+            display: inline-block;
+        }
+
+        @media (max-width: 640px) {
+            .coming-soon-container {
+                margin: 2rem 1rem;
+                padding: 1rem;
+            }
+
+            .language-preview {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .coming-soon-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+
+    <div class="logo-container">
+        <div class="globe-icon">
+            🌐
+        </div>
+    </div>
+
+    <div class="coming-soon-header">
+        <h1>Language Support Coming Soon</h1>
+        <p>We're working hard to bring you a fully multilingual experience. Soon you'll be able to use our calendar converter in both English and Amharic.</p>
+    </div>
+
+    <div class="language-preview">
+        <div class="language-badge">
+            <span>🇺🇸</span>
+            <span>English</span>
+        </div>
+        <div class="language-badge">
+            <span>🇪🇹</span>
+            <span>አማርኛ</span>
+        </div>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <div class="notification">
+        <p>🚀 Development in Progress: 75% Complete</p>
+    </div>
+</div>
+{% endblock %}

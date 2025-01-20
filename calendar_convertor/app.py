@@ -40,10 +40,17 @@ def calendar():
 @app.route('/holiday')
 def holiday():
     return render_template('holiday.html', year=datetime.now().year)
+@app.route('/language')
+def language():
+    return render_template('language.html', year=datetime.now().year)
+@app.route('/help')
+def help():
+    return render_template('help.html',year=datetime.now().year)
 
 @app.route('/about')
 def about():
     return render_template('about.html', year=datetime.now().year)
+
 
 @app.route("/convert", methods=["GET"])
 def convert():
