@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, url_for
+from flask import Flask, render_template, request, jsonify, url_for, send_from_directory
 from converter import EthiopianDateConverter
 import os
 
@@ -50,7 +50,13 @@ def help():
 @app.route('/about')
 def about():
     return render_template('about.html', year=datetime.now().year)
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml')
 
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt')
 
 @app.route("/convert", methods=["GET"])
 def convert():
