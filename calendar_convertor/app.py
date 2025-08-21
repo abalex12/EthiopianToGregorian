@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, redirect, url_for
 
 app = Flask(__name__, static_folder="static", template_folder=".")
 
@@ -28,6 +28,11 @@ def html_page(page):
 @app.route("/static/<path:path>")
 def static_files(path):
     return send_from_directory("static", path)
+
+@app.route("/convert")
+def redirect_convert():
+    return redirect(url_for("html_page", page="index.html"), code=301)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

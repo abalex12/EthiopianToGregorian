@@ -34,7 +34,6 @@
     
     <link rel="icon" type="image/x-icon" href="static/css/img/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="static/css/img/favicon.png">
-    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#6366f1">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -385,17 +384,5 @@
 
   gtag('config', 'G-XL9FGWS21S');
 </script>
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                    console.log('ServiceWorker registration successful');
-                }, function(err) {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
-    </script>
 </body>
 </html>
