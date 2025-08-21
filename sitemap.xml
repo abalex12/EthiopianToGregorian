@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+    <!-- Homepage - Main Ethiopian Calendar Converter -->
+    <url>
+        <loc>https://ethiopiancalender.up.railway.app/</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://ethiopiancalender.up.railway.app/favicon.png</image:loc>
+            <image:title>Ethiopian Calendar Converter</image:title>
+            <image:caption>Free Ethiopian to Gregorian date conversion tool</image:caption>
+        </image:image>
+    </url>
+
+    <!-- About Page -->
+    <url>
+        <loc>https://ethiopiancalender.up.railway.app/about.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://ethiopiancalender.up.railway.app/images/logo.png</image:loc>
+            <image:title>About Ethiopian Calendar Converter</image:title>
+            <image:caption>Learn about the Ethiopian calendar and conversion system</image:caption>
+        </image:image>
+    </url>
+
+    <!-- FAQ Page -->
+    <url>
+        <loc>https://ethiopiancalender.up.railway.app/faq.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://ethiopiancalender.up.railway.app/images/faq.png</image:loc>
+            <image:title>Ethiopian Calendar FAQ</image:title>
+            <image:caption>Common questions about Ethiopian calendar and conversions</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Calendar Guide -->
+    <url>
+        <loc>https://ethiopiancalender.up.railway.app/calendar-guide.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://ethiopiancalender.up.railway.app/images/calendar-guide.png</image:loc>
+            <image:title>Ethiopian Calendar Guide</image:title>
+            <image:caption>Educational guide to Ethiopian calendar months and leap years</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Contact Page -->
+    <url>
+        <loc>https://ethiopiancalender.up.railway.app/contact.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+        <image:image>
+            <image:loc>https://ethiopiancalender.up.railway.app/images/contact.png</image:loc>
+            <image:title>Contact Ethiopian Calendar Converter</image:title>
+            <image:caption>Contact page for support and feedback</image:caption>
+        </image:image>
+    </url>
+</urlset>
