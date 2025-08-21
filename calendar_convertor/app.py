@@ -17,6 +17,8 @@ def html_page(page):
         "calendar-guide.html",
         "faq.html",
         "contact.html",
+        "robots.txt",
+        "sitemap.xml",
     ]
     if page in allowed_pages:
         return send_from_directory(".", page)
