@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /language
-Disallow: /help
-
-
-Sitemap: https://ethiopiancalender.up.railway.app/sitemap.xml

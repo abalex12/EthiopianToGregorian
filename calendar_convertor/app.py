@@ -1,115 +1,33 @@
-from flask import Flask, render_template, request, jsonify, url_for, send_from_directory
-from converter import EthiopianDateConverter
-import os
+from flask import Flask, send_from_directory, redirect, url_for
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", template_folder=".")
 
-# Configure static folder and templates
-app.static_folder = 'static'
-app.template_folder = 'templates'
-
-# Add cache busting for static files
-@app.context_processor
-def override_url_for():
-    return dict(url_for=dated_url_for)
-
-def dated_url_for(endpoint, **values):
-    if endpoint == 'static':
-        filename = values.get('filename', None)
-        if filename:
-            file_path = os.path.join(app.root_path,
-                                   endpoint, filename)
-            values['q'] = int(os.stat(file_path).st_mtime)
-    return url_for(endpoint, **values)
-
-from datetime import datetime
-
-from datetime import datetime
-
-@app.route('/')
+# Serve main index.html at root
+@app.route("/")
 def index():
-    return render_template('index.html', year=datetime.now().year)
-@app.route('/home')
-def home():
-    return render_template('index.html', year=datetime.now().year)
+    return send_from_directory(".", "index.html")
 
-@app.route('/calendar')
-def calendar():
-    return render_template('calendar.html', year=datetime.now().year)
+# Serve other static pages (about.html, faq.html, etc.)
+@app.route("/<page>")
+def html_page(page):
+    allowed_pages = [
+        "index.html",
+        "robots.txt",
+        "sitemap.xml",
+    ]
+    if page in allowed_pages:
+        return send_from_directory(".", page)
+    return "404 Not Found", 404
 
-@app.route('/holiday')
-def holiday():
-    return render_template('holiday.html', year=datetime.now().year)
-@app.route('/language')
-def language():
-    return render_template('language.html', year=datetime.now().year)
-@app.route('/help')
-def help():
-    return render_template('help.html',year=datetime.now().year)
+# Serve static assets (css, js, images, etc.)
+@app.route("/static/<path:path>")
+def static_files(path):
+    return send_from_directory("static", path)
 
-@app.route('/about')
-def about():
-    return render_template('about.html', year=datetime.now().year)
-@app.route('/sitemap.xml')
-def sitemap():
-    return send_from_directory('static', 'sitemap.xml')
+@app.route("/convert")
+def redirect_convert():
+    return redirect(url_for("html_page", page="index.html"), code=301)
 
-@app.route('/robots.txt')
-def robots():
-    return send_from_directory('static', 'robots.txt')
 
-@app.route("/convert", methods=["GET"])
-def convert():
-    try:
-        conversion_type = request.args.get("conversionType")
-        
-        if conversion_type == "gregorianToEthiopian":
-            gregorian_date = request.args.get("gregorianDate")
-            year, month, day = map(int, gregorian_date.split("-"))
-            ethiopian_date = EthiopianDateConverter.to_ethiopian(year, month, day)
-            
-            return jsonify({
-                "success": True,
-                "result": {
-                    "year": ethiopian_date[0],
-                    "month": ethiopian_date[1],
-                    "day": ethiopian_date[2]
-                }
-            })
-
-        elif conversion_type == "ethiopianToGregorian":
-            ethiopian_year = int(request.args.get("ethiopianYear"))
-            ethiopian_month = int(request.args.get("ethiopianMonth"))
-            ethiopian_day = int(request.args.get("ethiopianDay"))
-            
-            gregorian_date = EthiopianDateConverter.to_gregorian(
-                ethiopian_year, ethiopian_month, ethiopian_day)
-            
-            return jsonify({
-                "success": True,
-                "result": {
-                    "year": gregorian_date.year,
-                    "month": gregorian_date.month,
-                    "day": gregorian_date.day
-                }
-            })
-        
-        else:
-            return jsonify({
-                "success": False,
-                "error": "Invalid conversion type"
-            }), 400
-
-    except ValueError as e:
-        return jsonify({
-            "success": False,
-            "error": str(e)
-        }), 400
-    except Exception as e:
-        return jsonify({
-            "success": False,
-            "error": "An unexpected error occurred"
-        }), 500
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)

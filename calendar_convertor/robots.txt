@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Block access to sensitive directories (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /cgi-bin/
+Disallow: *.tmp$
+Disallow: *.log$
+
+# Allow CSS, JS, and images for better rendering in search results
+Allow: /css/
+Allow: /js/
+
+
+# Sitemap location
+Sitemap: https://ethiopiancalender.up.railway.app/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
