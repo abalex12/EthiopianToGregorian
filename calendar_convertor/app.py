@@ -13,6 +13,7 @@ def html_page(page):
     # explicitly allow only the known HTML pages for security
     allowed_pages = [
         "index.html",
+        "indexs.html",
         "about.html",
         "calendar-guide.html",
         "faq.html",
