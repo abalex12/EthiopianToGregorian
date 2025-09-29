@@ -14,6 +14,18 @@
             <image:caption>Free Ethiopian to Gregorian date conversion tool</image:caption>
         </image:image>
     </url>
+    <!-- version 2 -->
+    <url>
+        <loc>https://ethiopiancalender.up.railway.app/indexs.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://ethiopiancalender.up.railway.app/img/favicon.png</image:loc>
+            <image:title>Ethiopian Calendar Converter Version 2</image:title>
+            <image:caption>Free Ethiopian to Gregorian date conversion tool</image:caption>
+        </image:image>
+    </url>
 
     <!-- About Page -->
     <url>
