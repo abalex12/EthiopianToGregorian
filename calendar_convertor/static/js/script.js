@@ -373,7 +373,7 @@ class CalendarApp {
                }, 100);
            } catch (error) {
                // If conversion fails, set a default Ethiopian date
-               yearSelect.value = 2017; // Current Ethiopian year approximately
+               yearSelect.value = 2018; // Current Ethiopian year 
                monthSelect.value = 1;
                this.updateDays();
                setTimeout(() => {
