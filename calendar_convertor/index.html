@@ -65,7 +65,56 @@
 </head>
 <body>
     <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
-
+<!-- Telegram Bot Announcement Modal -->
+<div class="telegram-announcement-overlay" id="telegramAnnouncement">
+    <div class="telegram-announcement-modal">
+        <button class="telegram-modal-close" id="closeTelegramAnnouncement" aria-label="Close announcement">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="telegram-modal-content">
+            <div class="telegram-modal-icon">
+                <i class="fab fa-telegram"></i>
+            </div>
+            
+            <div class="telegram-modal-badge">
+                <span class="badge-new">NEW</span>
+                <span class="badge-text">INTRODUCING</span>
+            </div>
+            
+            <h2 class="telegram-modal-title">Try Our Telegram Bot • የቴሌግራም ቦቱን ይሞክሩ</h2>           
+            <p class="telegram-modal-description">
+                Convert dates instantly in Telegram! Chat with our bot or use the mini-app - available 24/7.
+                <br><br>
+                ቀናትን በቴሌግራም በፍጥነት ይቀይሩ! ቦቱን ወይም ሚኒ-አፑን ይጠቀሙ - 24/7 ይገኛል።
+            </p>    
+            <div class="telegram-modal-features">
+                <div class="feature-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Instant Conversion</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Friendly</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-clock"></i>
+                    <span>24/7 Available</span>
+                </div>
+            </div>
+            
+            <a href="https://t.me/ethiocalendar_bot" target="_blank" rel="noopener noreferrer" class="telegram-modal-button">
+                <i class="fab fa-telegram me-2"></i>
+                Open @ethiocalendar_bot
+                <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+            
+            <button class="telegram-modal-dismiss" id="dismissTelegramAnnouncement">
+                Maybe Later
+            </button>
+        </div>
+    </div>
+</div>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #000000 0%, #1e293b 50%, #334155 100%); backdrop-filter: blur(10px); border-bottom: 2px solid rgba(99, 102, 241, 0.3);" role="navigation" aria-label="Main navigation">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="/" style="color: #ffffff;" aria-label="Ethiopian Calendar Converter Home">
@@ -401,6 +450,57 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="static/js/script.js"></script>
+
+<script>
+    // Telegram Announcement Modal Functionality
+(function() {
+    const announcement = document.getElementById('telegramAnnouncement');
+    const closeButton = document.getElementById('closeTelegramAnnouncement');
+    const dismissButton = document.getElementById('dismissTelegramAnnouncement');
+    const ANNOUNCEMENT_STORAGE_KEY = 'telegramAnnouncementDismissed';
+
+    // Check if announcement was permanently dismissed (close button was clicked)
+    // if (localStorage.getItem(ANNOUNCEMENT_STORAGE_KEY) === 'true') {
+    //     announcement.style.display = 'none';
+    //     return;
+    // }
+
+    function closeAnnouncementPermanently() {
+        announcement.classList.add('hidden');
+        localStorage.setItem(ANNOUNCEMENT_STORAGE_KEY, 'true');
+        
+        // Remove from DOM after animation
+        setTimeout(function() {
+            announcement.style.display = 'none';
+        }, 300);
+    }
+
+    function closeAnnouncementTemporarily() {
+        announcement.classList.add('hidden');
+        
+        // Remove from DOM after animation (but don't save to localStorage)
+        setTimeout(function() {
+            announcement.style.display = 'none';
+        }, 300);
+    }
+
+    closeButton.addEventListener('click', closeAnnouncementPermanently);
+    
+    dismissButton.addEventListener('click', closeAnnouncementTemporarily);
+    
+    announcement.addEventListener('click', function(e) {
+        if (e.target === announcement) {
+            closeAnnouncementTemporarily();
+        }
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && announcement.style.display !== 'none') {
+            closeAnnouncementTemporarily();
+        }
+    });
+})();
+</script>
 
 
 <!-- Google tag (gtag.js) -->
